@@ -15,15 +15,15 @@ public class Programmer extends Specialist{
     
     private String field;
 
-    public Programmer(String field, String name, Double man_day, Double length_practise, String education, ArrayList<String> certificates) {
+    public Programmer(String field, String name, Double man_day, String length_practise, String education, ArrayList<String> certificates) {
         super(name, man_day, length_practise, education, certificates);
         super.setPositionSpecialist("Programátor");
         this.field = field;
     }
 
     @Override
-    public String print_info_specialist() {
-        String informations = this.getBasic_info().get_all() + "\n" + this.field;
+    public String printInfoSpecialist() {
+        String informations = this.getBasicInfo().getAll() + "\n" + this.field;
         return informations;
     }
     

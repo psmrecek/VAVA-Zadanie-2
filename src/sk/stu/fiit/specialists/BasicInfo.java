@@ -11,16 +11,16 @@ import java.util.ArrayList;
  *
  * @author PeterSmrecek
  */
-public class Basic_info {
+public class BasicInfo {
     
     private String position;
     private String name;
     private Double man_day;
-    private Double length_practise;
+    private String length_practise;
     private String education;
     private ArrayList<String> certificates;
 
-    public Basic_info(String position, String name, Double man_day, Double length_practise, String education, ArrayList<String> certificates) {
+    public BasicInfo(String position, String name, Double man_day, String length_practise, String education, ArrayList<String> certificates) {
         this.position = position;
         this.name = name;
         this.man_day = man_day;
@@ -29,7 +29,7 @@ public class Basic_info {
         this.certificates = certificates;
     }
     
-    public String get_all(){
+    public String getAll(){
         return "";
     }
     
@@ -57,11 +57,11 @@ public class Basic_info {
         this.man_day = man_day;
     }
 
-    public Double getLength_practise() {
+    public String getLength_practise() {
         return length_practise;
     }
 
-    public void setLength_practise(Double length_practise) {
+    public void setLength_practise(String length_practise) {
         this.length_practise = length_practise;
     }
 

@@ -15,20 +15,20 @@ public class Consultant extends Specialist{
     
     private boolean auditor_nbu;
 
-    public Consultant(boolean auditor_nbu, String name, Double man_day, Double length_practise, String education, ArrayList<String> certificates) {
+    public Consultant(boolean auditor_nbu, String name, Double man_day, String length_practise, String education, ArrayList<String> certificates) {
         super(name, man_day, length_practise, education, certificates);
         super.setPositionSpecialist("Bezpečnostný konzultant a špecialista");
         this.auditor_nbu = auditor_nbu;
     }
     
     @Override
-    public String print_info_specialist() {
+    public String printInfoSpecialist() {
         String informations;
         
         if (this.auditor_nbu) {
-            informations = this.getBasic_info().get_all() + "\n Je je audítor kybernetickej bezpečnosti NBU";
+            informations = this.getBasicInfo().getAll() + "\n Je je audítor kybernetickej bezpečnosti NBU";
         } else {
-            informations = this.getBasic_info().get_all() + "\n Nie je audítor kybernetickej bezpečnosti NBU";
+            informations = this.getBasicInfo().getAll() + "\n Nie je audítor kybernetickej bezpečnosti NBU";
         }
         
         return informations;

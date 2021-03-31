@@ -16,7 +16,7 @@ public class Administrator extends Specialist{
     private String type;
     private String platform;
 
-    public Administrator(String type, String platform, String name, Double man_day, Double length_practise, String education, ArrayList<String> certificates) {
+    public Administrator(String type, String platform, String name, Double man_day, String length_practise, String education, ArrayList<String> certificates) {
         super(name, man_day, length_practise, education, certificates);
         super.setPositionSpecialist("Administrátor");
         this.type = type;
@@ -24,8 +24,8 @@ public class Administrator extends Specialist{
     }
     
     @Override
-    public String print_info_specialist(){
-        String informations = this.getBasic_info().get_all() + "\n" + this.type + "\n" + this.platform;
+    public String printInfoSpecialist(){
+        String informations = this.getBasicInfo().getAll() + "\n" + this.type + "\n" + this.platform;
         return informations;
     }
     

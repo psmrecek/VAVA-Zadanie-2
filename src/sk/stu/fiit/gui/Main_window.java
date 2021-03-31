@@ -5,6 +5,10 @@
  */
 package sk.stu.fiit.gui;
 
+import javax.swing.ImageIcon;
+import sk.stu.fiit.agency.Agency;
+import sk.stu.fiit.demos.DemoInputs;
+
 /**
  *
  * @author PeterSmrecek
@@ -16,6 +20,16 @@ public class Main_window extends javax.swing.JFrame {
      */
     public Main_window() {
         initComponents();
+        
+        Agency agency = new Agency();
+        DemoInputs.demoSpecialists(agency);
+        
+//        ImageIcon im1 = agency.getListEmployers().get(0).getIcon();
+//        System.out.println(im1.getIconHeight());
+        jLabel1.setIcon(agency.getListEmployers().get(0).getIcon());
+        jLabel2.setIcon(agency.getListEmployers().get(1).getIcon());
+        jLabel3.setIcon(agency.getListEmployers().get(2).getIcon());
+        
     }
 
     /**
@@ -31,6 +45,9 @@ public class Main_window extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -54,6 +71,11 @@ public class Main_window extends javax.swing.JFrame {
         desktopPane.setLayout(new java.awt.GridBagLayout());
 
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         desktopPane.add(jButton1, gridBagConstraints);
@@ -63,6 +85,13 @@ public class Main_window extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         desktopPane.add(jButton2, gridBagConstraints);
+
+        jLabel1.setText("jLabel1");
+        desktopPane.add(jLabel1, new java.awt.GridBagConstraints());
+        desktopPane.add(jLabel2, new java.awt.GridBagConstraints());
+
+        jLabel3.setText("jLabel3");
+        desktopPane.add(jLabel3, new java.awt.GridBagConstraints());
 
         jButton3.setText("jButton3");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -163,11 +192,11 @@ public class Main_window extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
         );
 
         pack();
@@ -188,6 +217,10 @@ public class Main_window extends javax.swing.JFrame {
     private void cutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cutMenuItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cutMenuItemActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,6 +273,9 @@ public class Main_window extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;

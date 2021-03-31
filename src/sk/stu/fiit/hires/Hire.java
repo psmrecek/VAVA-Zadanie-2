@@ -21,6 +21,11 @@ public class Hire {
     public Hire(ArrayList<Specialist> specialists, Employer employer) {
         this.specialists = specialists;
         this.employer = employer;
+        
+        for (Specialist specialist : specialists) {
+            specialist.setHire(this);
+            specialist.setHired(true);
+        }
     }
 
     public Employer getEmployer() {

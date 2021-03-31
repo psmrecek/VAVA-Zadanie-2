@@ -15,8 +15,15 @@ public class Employer {
     
     private String name;
     private String field;
-    private String number_of_employees;
+    private int numberOfEmployees;
     private ImageIcon icon;
+
+    public Employer(String name, String field, int numberOfEmployees, ImageIcon icon) {
+        this.name = name;
+        this.field = field;
+        this.numberOfEmployees = numberOfEmployees;
+        this.icon = icon;
+    }
 
     public String getName() {
         return name;
@@ -34,12 +41,12 @@ public class Employer {
         this.field = field;
     }
 
-    public String getNumber_of_employees() {
-        return number_of_employees;
+    public int getNumberOfEmployees() {
+        return numberOfEmployees;
     }
 
-    public void setNumber_of_employees(String number_of_employees) {
-        this.number_of_employees = number_of_employees;
+    public void setNumberOfEmployees(int numberOfEmployees) {
+        this.numberOfEmployees = numberOfEmployees;
     }
 
     public ImageIcon getIcon() {

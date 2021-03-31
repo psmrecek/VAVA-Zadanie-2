@@ -6,6 +6,7 @@
 package sk.stu.fiit.specialists;
 
 import java.util.ArrayList;
+import sk.stu.fiit.hires.Hire;
 
 /**
  *
@@ -13,31 +14,44 @@ import java.util.ArrayList;
  */
 public abstract class Specialist {
     
-    private Basic_info basic_info;
+    private BasicInfo basicInfo;
+    private boolean hired = false;
+    private Hire hire;
 
-    public Specialist(String name, Double man_day, Double length_practise, String education, ArrayList<String> certificates) {
-        this.basic_info.setPosition("Špecialista");
-        this.basic_info.setName(name);
-        this.basic_info.setMan_day(man_day);
-        this.basic_info.setLength_practise(length_practise);
-        this.basic_info.setEducation(education);
-        this.basic_info.setCertificates(certificates);
+    public Specialist(String name, Double man_day, String length_practise, String education, ArrayList<String> certificates) {
+        this.basicInfo = new BasicInfo("Špecialista", name, man_day, length_practise, education, certificates);
     }
     
     public void setPositionSpecialist(String position){
-        this.basic_info.setPosition(position);
+        this.basicInfo.setPosition(position);
     }
     
-    public String print_info_specialist(){
-        return basic_info.get_all();
+    public String printInfoSpecialist(){
+        return basicInfo.getAll();
     }
 
-    public Basic_info getBasic_info() {
-        return basic_info;
+    public BasicInfo getBasicInfo() {
+        return basicInfo;
     }
 
-    public void setBasic_info(Basic_info basic_info) {
-        this.basic_info = basic_info;
+    public void setBasicInfo(BasicInfo basic_info) {
+        this.basicInfo = basic_info;
+    }
+
+    public boolean isHired() {
+        return hired;
+    }
+
+    public void setHired(boolean hired) {
+        this.hired = hired;
+    }
+
+    public Hire getHire() {
+        return hire;
+    }
+
+    public void setHire(Hire hire) {
+        this.hire = hire;
     }
     
 }
