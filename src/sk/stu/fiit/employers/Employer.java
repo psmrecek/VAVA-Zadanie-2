@@ -18,12 +18,14 @@ public class Employer {
     private String name;
     private String field;
     private ArrayList<Hire> listOfHires;
-    private int numberOfEmployees = 0;
+    private int agencyNumberOfEmployees = 0;
+    private int givenNumberOfEmployees;
     private ImageIcon icon;
 
-    public Employer(String name, String field, ImageIcon icon) {
+    public Employer(String name, String field, int givenNumberOfEmployees, ImageIcon icon) {
         this.name = name;
         this.field = field;
+        this.givenNumberOfEmployees = givenNumberOfEmployees;
         this.icon = icon;
         this.listOfHires = new ArrayList<>();
         calculateNumberOfEmployees();
@@ -45,12 +47,12 @@ public class Employer {
         this.field = field;
     }
 
-    public int getNumberOfEmployees() {
-        return numberOfEmployees;
+    public int getAgencyNumberOfEmployees() {
+        return agencyNumberOfEmployees;
     }
 
-    public void setNumberOfEmployees(int numberOfEmployees) {
-        this.numberOfEmployees = numberOfEmployees;
+    public void setAgencyNumberOfEmployees(int agencyNumberOfEmployees) {
+        this.agencyNumberOfEmployees = agencyNumberOfEmployees;
     }
 
     public ImageIcon getIcon() {
@@ -81,9 +83,17 @@ public class Employer {
     }
     
     public void calculateNumberOfEmployees(){
-        numberOfEmployees = 0;
+        agencyNumberOfEmployees = 0;
         for (Hire hire : listOfHires) {
-            numberOfEmployees += hire.getNumberOfHired();
+            agencyNumberOfEmployees += hire.getNumberOfHired();
         }
+    }
+
+    public int getGivenNumberOfEmployees() {
+        return givenNumberOfEmployees;
+    }
+
+    public void setGivenNumberOfEmployees(int givenNumberOfEmployees) {
+        this.givenNumberOfEmployees = givenNumberOfEmployees;
     }
 }

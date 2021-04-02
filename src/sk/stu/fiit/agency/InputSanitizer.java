@@ -63,11 +63,17 @@ public class InputSanitizer {
         }
         
         return true;
-        
     }
     
     public static boolean emptyString(String string){
-        return string.length() == 0;
+        boolean result;
+        
+        try {
+            result = string.length() == 0;
+            return result;
+        } catch (Exception e) {
+            return false;
+        }
     } 
     
     public static boolean validDate(String string){

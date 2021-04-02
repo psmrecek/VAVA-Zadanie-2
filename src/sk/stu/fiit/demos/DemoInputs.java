@@ -66,11 +66,11 @@ public class DemoInputs {
         int size = 100;
 
         ImageIcon icon1 = new ImageIcon(img1.getScaledInstance(size, size, Image.SCALE_DEFAULT));
-        Employer emp1 = new Employer("Asus", "Počítače", icon1);
+        Employer emp1 = new Employer("Asus", "Počítače", 150, icon1);
         ImageIcon icon2 = new ImageIcon(img2.getScaledInstance(size, size, Image.SCALE_DEFAULT));
-        Employer emp2 = new Employer("Dell", "Počítače", icon2);
+        Employer emp2 = new Employer("Dell", "Počítače", 200, icon2);
         ImageIcon icon3 = new ImageIcon(img3.getScaledInstance(size, size, Image.SCALE_DEFAULT));
-        Employer emp3 = new Employer("Google", "Počítače", icon3);
+        Employer emp3 = new Employer("Google", "Počítače", 10000, icon3);
         
         ArrayList<Specialist> sp1 = new ArrayList<>();
         sp1.add(pr1);

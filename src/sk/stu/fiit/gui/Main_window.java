@@ -83,6 +83,7 @@ public class Main_window extends javax.swing.JFrame {
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("IT profesia");
 
         desktopPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -100,7 +101,7 @@ public class Main_window extends javax.swing.JFrame {
         buttonPnl.add(addSpecBtn);
 
         viewSpecBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        viewSpecBtn.setText("Zobraziť špecialistu");
+        viewSpecBtn.setText("Zobraziť špecialistov");
         viewSpecBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 viewSpecBtnMouseReleased(evt);
@@ -194,7 +195,7 @@ public class Main_window extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Názov", "Oblasť", "Počet zamestnancov", "Logo"
+                "Názov", "Oblasť", "Počet zamestnancov", "Počet zamestnancov cez agentúru"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -207,9 +208,6 @@ public class Main_window extends javax.swing.JFrame {
         });
         employersTbl.getTableHeader().setReorderingAllowed(false);
         employersScroll.setViewportView(employersTbl);
-        if (employersTbl.getColumnModel().getColumnCount() > 0) {
-            employersTbl.getColumnModel().getColumn(3).setHeaderValue("Logo");
-        }
 
         desktopPane.add(employersScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 630, 150));
 
@@ -426,6 +424,8 @@ public class Main_window extends javax.swing.JFrame {
 
     private void viewSpecBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewSpecBtnMouseReleased
         // TODO add your handling code here:
+        ViewSpecialistWindow vsw = new ViewSpecialistWindow(this);
+        vsw.setVisible(true);
     }//GEN-LAST:event_viewSpecBtnMouseReleased
 
     private void addEmpBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addEmpBtnMouseReleased
@@ -442,6 +442,8 @@ public class Main_window extends javax.swing.JFrame {
 
     private void addSpecBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addSpecBtnMouseReleased
         // TODO add your handling code here:
+        AddSpecialistWindow spw = new AddSpecialistWindow(this);
+        spw.setVisible(true);
     }//GEN-LAST:event_addSpecBtnMouseReleased
 
     /**
@@ -647,8 +649,8 @@ public class Main_window extends javax.swing.JFrame {
             
             rowData[0] = list.get(i).getName();
             rowData[1] = list.get(i).getField();
-            rowData[2] = list.get(i).getNumberOfEmployees();
-            rowData[3] = list.get(i).getIcon();
+            rowData[2] = list.get(i).getGivenNumberOfEmployees();
+            rowData[3] = list.get(i).getAgencyNumberOfEmployees();
             
             model.addRow(rowData);
             
@@ -675,4 +677,8 @@ public class Main_window extends javax.swing.JFrame {
         }
     }
 
+    public Agency getAgency() {
+        return agency;
+    }
+    
 }

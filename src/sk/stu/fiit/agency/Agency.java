@@ -91,4 +91,22 @@ public class Agency<T extends Specialist> {
         return (Administrator) listAdministrators.get(id);
     }
     
+    public ArrayList<Specialist> getAllSpecialist(){
+        ArrayList<Specialist> listOfSpecialists = new ArrayList<>();
+        
+        for (Specialist programmer : listProgrammers) {
+            listOfSpecialists.add(programmer);
+        }
+        
+        for (Specialist consultant : listConsultants) {
+            listOfSpecialists.add(consultant);
+        }
+        
+        for (Specialist administrator : listAdministrators) {
+            listOfSpecialists.add(administrator);
+        }
+        
+        return listOfSpecialists;
+    }
+    
 }
