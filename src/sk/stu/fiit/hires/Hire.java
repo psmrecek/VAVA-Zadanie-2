@@ -6,6 +6,7 @@
 package sk.stu.fiit.hires;
 
 import java.util.ArrayList;
+import sk.stu.fiit.agency.InputSanitizer;
 import sk.stu.fiit.employers.Employer;
 import sk.stu.fiit.specialists.Specialist;
 
@@ -15,17 +16,22 @@ import sk.stu.fiit.specialists.Specialist;
  */
 public class Hire {
     
-    private ArrayList<Specialist> specialists;
     private Employer employer;
+    private ArrayList<Specialist> specialists;
+    private String dateString;
 
     public Hire(ArrayList<Specialist> specialists, Employer employer) {
         this.specialists = specialists;
         this.employer = employer;
+        this.dateString = InputSanitizer.createDateString();
         
         for (Specialist specialist : specialists) {
             specialist.setHire(this);
             specialist.setHired(true);
         }
+
+        employer.addHire(this);
+        
     }
 
     public Employer getEmployer() {
@@ -44,4 +50,17 @@ public class Hire {
         this.specialists = specialists;
     }
     
+    public int getNumberOfHired(){
+        return specialists.size();
+    }
+
+    public String getDateString() {
+        return dateString;
+    }
+
+    public void setDateString(String dateString) {
+        this.dateString = dateString;
+    }
+    
 }
+

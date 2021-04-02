@@ -54,4 +54,12 @@ public abstract class Specialist {
         this.hire = hire;
     }
     
+    public String isHiredText(){
+        if(hired){
+            return "Najatý";
+        }
+        
+        return "Voľný";
+    }
+    
 }

@@ -5,7 +5,9 @@
  */
 package sk.stu.fiit.employers;
 
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import sk.stu.fiit.hires.Hire;
 
 /**
  *
@@ -15,14 +17,16 @@ public class Employer {
     
     private String name;
     private String field;
-    private int numberOfEmployees;
+    private ArrayList<Hire> listOfHires;
+    private int numberOfEmployees = 0;
     private ImageIcon icon;
 
-    public Employer(String name, String field, int numberOfEmployees, ImageIcon icon) {
+    public Employer(String name, String field, ImageIcon icon) {
         this.name = name;
         this.field = field;
-        this.numberOfEmployees = numberOfEmployees;
         this.icon = icon;
+        this.listOfHires = new ArrayList<>();
+        calculateNumberOfEmployees();
     }
 
     public String getName() {
@@ -56,5 +60,30 @@ public class Employer {
     public void setIcon(ImageIcon icon) {
         this.icon = icon;
     }
+
+    public ArrayList<Hire> getListOfHires() {
+        return listOfHires;
+    }
+
+    public void setListOfHires(ArrayList<Hire> listOfHires) {
+        this.listOfHires = listOfHires;
+        calculateNumberOfEmployees();
+    }
     
+    public void addHire(Hire hire){
+        listOfHires.add(hire);
+        calculateNumberOfEmployees();
+    }
+    
+    public void removeHire(Hire hire){
+        listOfHires.remove(hire);
+        calculateNumberOfEmployees();
+    }
+    
+    public void calculateNumberOfEmployees(){
+        numberOfEmployees = 0;
+        for (Hire hire : listOfHires) {
+            numberOfEmployees += hire.getNumberOfHired();
+        }
+    }
 }

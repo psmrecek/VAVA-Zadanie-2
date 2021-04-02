@@ -11,31 +11,32 @@ import sk.stu.fiit.hires.Hire;
 import sk.stu.fiit.specialists.Administrator;
 import sk.stu.fiit.specialists.Consultant;
 import sk.stu.fiit.specialists.Programmer;
+import sk.stu.fiit.specialists.Specialist;
 
 /**
  *
  * @author PeterSmrecek
  */
-public class Agency {
+public class Agency<T extends Specialist> {
     
-    private ArrayList<Programmer> listProgrammers = new ArrayList<>();
-    private ArrayList<Consultant> listConsultants = new ArrayList<>();
-    private ArrayList<Administrator> listAdministrators = new ArrayList<>();
+    private ArrayList<T> listProgrammers = new ArrayList<>();
+    private ArrayList<T> listConsultants = new ArrayList<>();
+    private ArrayList<T> listAdministrators = new ArrayList<>();
     
     private ArrayList<Employer> listEmployers = new ArrayList<>();
     
     private ArrayList<Hire> listHires = new ArrayList<>();
     
     public void addProgrammer(Programmer programmer){
-        listProgrammers.add(programmer);
+        listProgrammers.add((T) programmer);
     }
     
     public void addConsultant(Consultant consultant){
-        listConsultants.add(consultant);
+        listConsultants.add((T) consultant);
     }
     
     public void addAdministrator(Administrator administrator){
-        listAdministrators.add(administrator);
+        listAdministrators.add((T) administrator);
     }
     
     public void addEmployer(Employer employer){
@@ -55,23 +56,39 @@ public class Agency {
     }
     
     public ArrayList<Programmer> getListProgrammers() {
-        return listProgrammers;
+        return (ArrayList<Programmer>) listProgrammers;
     }
 
     public ArrayList<Consultant> getListConsultants() {
-        return listConsultants;
+        return (ArrayList<Consultant>) listConsultants;
     }
 
     public ArrayList<Administrator> getListAdministrators() {
-        return listAdministrators;
+        return (ArrayList<Administrator>) listAdministrators;
     }
 
     public ArrayList<Employer> getListEmployers() {
         return listEmployers;
     }
+    
+    public Employer getEmployer(int id) {
+        return listEmployers.get(id);
+    }
 
     public ArrayList<Hire> getListHires() {
         return listHires;
+    }
+    
+    public Programmer getProgrammer(int id){
+        return (Programmer) listProgrammers.get(id);
+    }
+    
+    public Consultant getConsultant(int id){
+        return (Consultant) listConsultants.get(id);
+    }
+    
+    public Administrator getAdministrator(int id){
+        return (Administrator) listAdministrators.get(id);
     }
     
 }
