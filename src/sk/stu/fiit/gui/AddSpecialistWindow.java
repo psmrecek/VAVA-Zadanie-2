@@ -154,7 +154,7 @@ public class AddSpecialistWindow extends javax.swing.JFrame {
         addSpecialistPnl.add(educationTf, gridBagConstraints);
 
         atributesCb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        atributesCb.setPreferredSize(new java.awt.Dimension(150, 26));
+        atributesCb.setPreferredSize(new java.awt.Dimension(300, 26));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 10;
@@ -163,7 +163,7 @@ public class AddSpecialistWindow extends javax.swing.JFrame {
         typeBg.add(programmerRb);
         programmerRb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         programmerRb.setText("Programátor");
-        programmerRb.setPreferredSize(new java.awt.Dimension(150, 29));
+        programmerRb.setPreferredSize(new java.awt.Dimension(300, 29));
         programmerRb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 programmerRbActionPerformed(evt);
@@ -177,7 +177,7 @@ public class AddSpecialistWindow extends javax.swing.JFrame {
         typeBg.add(consultantRb);
         consultantRb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         consultantRb.setText("Bezpečnostný konzultant");
-        consultantRb.setPreferredSize(new java.awt.Dimension(150, 29));
+        consultantRb.setPreferredSize(new java.awt.Dimension(300, 29));
         consultantRb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultantRbActionPerformed(evt);
@@ -191,7 +191,7 @@ public class AddSpecialistWindow extends javax.swing.JFrame {
         typeBg.add(administratorRb);
         administratorRb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         administratorRb.setText("Administrátor");
-        administratorRb.setPreferredSize(new java.awt.Dimension(150, 29));
+        administratorRb.setPreferredSize(new java.awt.Dimension(300, 29));
         administratorRb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 administratorRbActionPerformed(evt);
@@ -243,7 +243,7 @@ public class AddSpecialistWindow extends javax.swing.JFrame {
 
         atributesLb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         atributesLb.setText("Vyber typ špecialistu");
-        atributesLb.setPreferredSize(new java.awt.Dimension(150, 20));
+        atributesLb.setPreferredSize(new java.awt.Dimension(300, 20));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 8;
@@ -302,7 +302,7 @@ public class AddSpecialistWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(addSpecialistPnl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 937, Short.MAX_VALUE)
+            .addComponent(addSpecialistPnl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1136, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
