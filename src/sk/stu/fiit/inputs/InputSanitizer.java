@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.stu.fiit.agency;
+package sk.stu.fiit.inputs;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -89,5 +92,22 @@ public class InputSanitizer {
         SimpleDateFormat formatter= new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
         Date date = new Date(System.currentTimeMillis());
         return formatter.format(date);
+    }
+    
+    public static ImageIcon resize(BufferedImage img, int maxSize){
+        double vertical = img.getHeight();
+        double horizontal = img.getWidth();
+        double coef;
+        if (vertical > horizontal) {
+            coef = vertical / maxSize;
+        } else {
+            coef = horizontal / maxSize;
+        }
+        
+        vertical /= coef;
+        horizontal /= coef;        
+        
+        return new ImageIcon(img.getScaledInstance((int) horizontal, (int) vertical, Image.SCALE_DEFAULT));
+        
     }
 }

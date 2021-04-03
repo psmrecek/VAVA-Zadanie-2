@@ -6,8 +6,6 @@
 package sk.stu.fiit.agency;
 
 import java.util.ArrayList;
-import sk.stu.fiit.employers.Employer;
-import sk.stu.fiit.hires.Hire;
 import sk.stu.fiit.specialists.Administrator;
 import sk.stu.fiit.specialists.Consultant;
 import sk.stu.fiit.specialists.Programmer;
@@ -109,4 +107,7 @@ public class Agency<T extends Specialist> {
         return listOfSpecialists;
     }
     
+    public Hire getHire(int id){
+        return listHires.get(id);
+    }
 }

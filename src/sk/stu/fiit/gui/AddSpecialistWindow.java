@@ -8,7 +8,7 @@ package sk.stu.fiit.gui;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import sk.stu.fiit.agency.InputSanitizer;
+import sk.stu.fiit.inputs.InputSanitizer;
 import sk.stu.fiit.specialists.Administrator;
 import sk.stu.fiit.specialists.Consultant;
 import sk.stu.fiit.specialists.Programmer;
@@ -71,6 +71,7 @@ public class AddSpecialistWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Evidencia špecialistu");
+        setLocationByPlatform(true);
 
         java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
         jPanel1Layout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};

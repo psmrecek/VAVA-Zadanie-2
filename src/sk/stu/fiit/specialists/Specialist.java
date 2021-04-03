@@ -6,7 +6,7 @@
 package sk.stu.fiit.specialists;
 
 import java.util.ArrayList;
-import sk.stu.fiit.hires.Hire;
+import sk.stu.fiit.agency.Hire;
 
 /**
  *

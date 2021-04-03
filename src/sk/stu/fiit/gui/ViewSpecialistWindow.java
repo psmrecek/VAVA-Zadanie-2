@@ -10,8 +10,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import sk.stu.fiit.agency.InputSanitizer;
-import sk.stu.fiit.employers.Employer;
+import sk.stu.fiit.inputs.InputSanitizer;
+import sk.stu.fiit.agency.Employer;
 import sk.stu.fiit.specialists.Administrator;
 import sk.stu.fiit.specialists.Consultant;
 import sk.stu.fiit.specialists.Programmer;
@@ -81,7 +81,8 @@ public class ViewSpecialistWindow extends javax.swing.JFrame {
         fieldTf = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Evidencia špecialistu");
+        setTitle("Údaje špecialistu");
+        setLocationByPlatform(true);
 
         java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
         jPanel1Layout.columnWidths = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};

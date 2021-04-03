@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.stu.fiit.demos;
+package sk.stu.fiit.inputs;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import sk.stu.fiit.agency.Agency;
-import sk.stu.fiit.employers.Employer;
-import sk.stu.fiit.hires.Hire;
+import sk.stu.fiit.agency.Employer;
+import sk.stu.fiit.agency.Hire;
 import sk.stu.fiit.specialists.Administrator;
 import sk.stu.fiit.specialists.Consultant;
 import sk.stu.fiit.specialists.Programmer;
@@ -63,13 +63,12 @@ public class DemoInputs {
             e.printStackTrace();
         }
 
-        int size = 100;
-
-        ImageIcon icon1 = new ImageIcon(img1.getScaledInstance(size, size, Image.SCALE_DEFAULT));
+     
+        ImageIcon icon1 = InputSanitizer.resize(img1, 180);
         Employer emp1 = new Employer("Asus", "Počítače", 150, icon1);
-        ImageIcon icon2 = new ImageIcon(img2.getScaledInstance(size, size, Image.SCALE_DEFAULT));
+        ImageIcon icon2 = InputSanitizer.resize(img2, 180);
         Employer emp2 = new Employer("Dell", "Počítače", 200, icon2);
-        ImageIcon icon3 = new ImageIcon(img3.getScaledInstance(size, size, Image.SCALE_DEFAULT));
+        ImageIcon icon3 = InputSanitizer.resize(img3, 180);
         Employer emp3 = new Employer("Google", "Počítače", 10000, icon3);
         
         ArrayList<Specialist> sp1 = new ArrayList<>();
@@ -114,4 +113,6 @@ public class DemoInputs {
 //        agency.addHire(new Hire(co3, emp3));
 
     }
+    
+
 }

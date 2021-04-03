@@ -10,10 +10,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import sk.stu.fiit.agency.Agency;
-import sk.stu.fiit.agency.InputSanitizer;
-import sk.stu.fiit.demos.DemoInputs;
-import sk.stu.fiit.employers.Employer;
-import sk.stu.fiit.hires.Hire;
+import sk.stu.fiit.inputs.InputSanitizer;
+import sk.stu.fiit.inputs.DemoInputs;
+import sk.stu.fiit.agency.Employer;
+import sk.stu.fiit.agency.Hire;
 import sk.stu.fiit.specialists.Specialist;
 
 /**
@@ -27,14 +27,9 @@ public class Main_window extends javax.swing.JFrame {
      */
     public Main_window() {
         initComponents();
-
         
-        DemoInputs.demoSpecialists(agency);
         updateAll();
-        
-//        jLabel1.setIcon(agency.getListEmployers().get(0).getIcon());
-//        jLabel2.setIcon(agency.getListEmployers().get(1).getIcon());
-//        jLabel3.setIcon(agency.getListEmployers().get(2).getIcon());
+
     }
     
     private Agency agency = new Agency();
@@ -47,6 +42,7 @@ public class Main_window extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         desktopPane = new javax.swing.JDesktopPane();
         buttonPnl = new javax.swing.JPanel();
@@ -55,8 +51,7 @@ public class Main_window extends javax.swing.JFrame {
         addEmpBtn = new javax.swing.JButton();
         showEmpBtn = new javax.swing.JButton();
         hireSpecBtn = new javax.swing.JButton();
-        editSpecBtn = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        editHireBtn = new javax.swing.JButton();
         programmerScroll = new javax.swing.JScrollPane();
         programmerTbl = new javax.swing.JTable();
         employersScroll = new javax.swing.JScrollPane();
@@ -69,25 +64,31 @@ public class Main_window extends javax.swing.JFrame {
         hiresTbl = new javax.swing.JTable();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
+        addSpecMi = new javax.swing.JMenuItem();
+        viewSpecMi = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        addEmpMi = new javax.swing.JMenuItem();
+        showEmpMi = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        hireSpecMi = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        exitMi = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
+        editHireMi = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
-        contentMenuItem = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
+        demoMi = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        hintMi = new javax.swing.JMenuItem();
+        aboutMi = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("IT profesia");
+        setLocationByPlatform(true);
 
-        desktopPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        desktopPane.setLayout(new java.awt.GridBagLayout());
 
         buttonPnl.setBackground(new java.awt.Color(255, 255, 255));
+        buttonPnl.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ovládacie prvky", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
         buttonPnl.setOpaque(false);
         buttonPnl.setLayout(new javax.swing.BoxLayout(buttonPnl, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -119,7 +120,7 @@ public class Main_window extends javax.swing.JFrame {
         buttonPnl.add(addEmpBtn);
 
         showEmpBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        showEmpBtn.setText("Zobraziť zamestnávateľa");
+        showEmpBtn.setText("Zobraziť vybraného zamestnávateľa");
         showEmpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 showEmpBtnMouseReleased(evt);
@@ -136,20 +137,24 @@ public class Main_window extends javax.swing.JFrame {
         });
         buttonPnl.add(hireSpecBtn);
 
-        editSpecBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        editSpecBtn.setText("Upraviť prenájom");
-        editSpecBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        editHireBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        editHireBtn.setText("Upraviť prenájom");
+        editHireBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                editSpecBtnMouseReleased(evt);
+                editHireBtnMouseReleased(evt);
             }
         });
-        buttonPnl.add(editSpecBtn);
+        buttonPnl.add(editHireBtn);
 
-        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton7.setText("jButton7");
-        buttonPnl.add(jButton7);
-
-        desktopPane.add(buttonPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 680, 1240, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 163;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 30, 34, 0);
+        desktopPane.add(buttonPnl, gridBagConstraints);
 
         programmerScroll.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tabuľka programátorov", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12))); // NOI18N
         programmerScroll.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -184,7 +189,18 @@ public class Main_window extends javax.swing.JFrame {
             programmerTbl.getColumnModel().getColumn(6).setMaxWidth(50);
         }
 
-        desktopPane.add(programmerScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 1260, 150));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1227;
+        gridBagConstraints.ipady = 101;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 20);
+        desktopPane.add(programmerScroll, gridBagConstraints);
 
         employersScroll.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tabuľka zamestnávateľov", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12))); // NOI18N
         employersScroll.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -209,7 +225,17 @@ public class Main_window extends javax.swing.JFrame {
         employersTbl.getTableHeader().setReorderingAllowed(false);
         employersScroll.setViewportView(employersTbl);
 
-        desktopPane.add(employersScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 630, 150));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 597;
+        gridBagConstraints.ipady = 101;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 0);
+        desktopPane.add(employersScroll, gridBagConstraints);
 
         consultantScroll.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tabuľka konzultantov", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12))); // NOI18N
         consultantScroll.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -244,7 +270,18 @@ public class Main_window extends javax.swing.JFrame {
             consultantTbl.getColumnModel().getColumn(6).setMaxWidth(50);
         }
 
-        desktopPane.add(consultantScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 1260, 150));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1227;
+        gridBagConstraints.ipady = 101;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 20);
+        desktopPane.add(consultantScroll, gridBagConstraints);
 
         adminScroll.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tabuľka administrátorov", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12))); // NOI18N
         adminScroll.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -279,7 +316,18 @@ public class Main_window extends javax.swing.JFrame {
             adminTbl.getColumnModel().getColumn(6).setMaxWidth(50);
         }
 
-        desktopPane.add(adminScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 1260, 150));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1227;
+        gridBagConstraints.ipady = 101;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 20);
+        desktopPane.add(adminScroll, gridBagConstraints);
 
         hiresScroll.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tabuľka prenájmov", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12))); // NOI18N
         hiresScroll.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
@@ -290,7 +338,7 @@ public class Main_window extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Zemestnávateľ", "Počet zamestnancov v prenájme", "Dátum a čas vytvorenia"
+                "Id", "Zemestnávateľ", "Počet zamestnancov v prenájme", "Dátum a čas poslednej úpravy"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -307,81 +355,132 @@ public class Main_window extends javax.swing.JFrame {
             hiresTbl.getColumnModel().getColumn(0).setMaxWidth(50);
         }
 
-        desktopPane.add(hiresScroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 500, 620, 150));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 587;
+        gridBagConstraints.ipady = 101;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 20);
+        desktopPane.add(hiresScroll, gridBagConstraints);
 
         fileMenu.setMnemonic('f');
-        fileMenu.setText("File");
+        fileMenu.setText("Súbor");
 
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
-        openMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        addSpecMi.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        addSpecMi.setMnemonic('o');
+        addSpecMi.setText("Pridať špecialistu");
+        addSpecMi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openMenuItemActionPerformed(evt);
+                addSpecMiActionPerformed(evt);
             }
         });
-        fileMenu.add(openMenuItem);
+        fileMenu.add(addSpecMi);
 
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
-
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Save As ...");
-        saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
-
-        exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Exit");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        viewSpecMi.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        viewSpecMi.setMnemonic('s');
+        viewSpecMi.setText("Zobraziť špecialistov");
+        viewSpecMi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
+                viewSpecMiActionPerformed(evt);
             }
         });
-        fileMenu.add(exitMenuItem);
+        fileMenu.add(viewSpecMi);
+        fileMenu.add(jSeparator1);
+
+        addEmpMi.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        addEmpMi.setMnemonic('a');
+        addEmpMi.setText("Pridať zamestnávateľa");
+        addEmpMi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addEmpMiActionPerformed(evt);
+            }
+        });
+        fileMenu.add(addEmpMi);
+
+        showEmpMi.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        showEmpMi.setText("Zobraziť vybraného zamestnávateľa");
+        showEmpMi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showEmpMiActionPerformed(evt);
+            }
+        });
+        fileMenu.add(showEmpMi);
+        fileMenu.add(jSeparator2);
+
+        hireSpecMi.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        hireSpecMi.setText("Najať špecialistov");
+        hireSpecMi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hireSpecMiActionPerformed(evt);
+            }
+        });
+        fileMenu.add(hireSpecMi);
+        fileMenu.add(jSeparator3);
+
+        exitMi.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        exitMi.setMnemonic('x');
+        exitMi.setText("Koniec");
+        exitMi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitMiActionPerformed(evt);
+            }
+        });
+        fileMenu.add(exitMi);
 
         menuBar.add(fileMenu);
 
         editMenu.setMnemonic('e');
-        editMenu.setText("Edit");
+        editMenu.setText("Úpravy");
 
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Cut");
-        cutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        editHireMi.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        editHireMi.setMnemonic('t');
+        editHireMi.setText("Upraviť prenájom");
+        editHireMi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cutMenuItemActionPerformed(evt);
+                editHireMiActionPerformed(evt);
             }
         });
-        editMenu.add(cutMenuItem);
-
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Copy");
-        editMenu.add(copyMenuItem);
-
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
-
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
+        editMenu.add(editHireMi);
 
         menuBar.add(editMenu);
 
         helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
+        helpMenu.setText("Pomocník");
 
-        contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Contents");
-        helpMenu.add(contentMenuItem);
-
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
-        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        demoMi.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        demoMi.setText("Vzorové vstupy");
+        demoMi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aboutMenuItemActionPerformed(evt);
+                demoMiActionPerformed(evt);
             }
         });
-        helpMenu.add(aboutMenuItem);
+        helpMenu.add(demoMi);
+        helpMenu.add(jSeparator4);
+
+        hintMi.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        hintMi.setMnemonic('c');
+        hintMi.setText("Návod");
+        hintMi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hintMiActionPerformed(evt);
+            }
+        });
+        helpMenu.add(hintMi);
+
+        aboutMi.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        aboutMi.setMnemonic('a');
+        aboutMi.setText("About");
+        aboutMi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMiActionPerformed(evt);
+            }
+        });
+        helpMenu.add(aboutMi);
 
         menuBar.add(helpMenu);
 
@@ -391,60 +490,96 @@ public class Main_window extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1300, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1300, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
+    private void exitMiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMiActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
+    }//GEN-LAST:event_exitMiActionPerformed
 
-    private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
+    private void addSpecMiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSpecMiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_openMenuItemActionPerformed
+        addSpec();
+    }//GEN-LAST:event_addSpecMiActionPerformed
 
-    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+    private void aboutMiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_aboutMenuItemActionPerformed
+        showAbout();
+    }//GEN-LAST:event_aboutMiActionPerformed
 
-    private void cutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cutMenuItemActionPerformed
+    private void editHireMiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editHireMiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cutMenuItemActionPerformed
+        editHire();
+    }//GEN-LAST:event_editHireMiActionPerformed
 
     private void hireSpecBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hireSpecBtnMouseReleased
         // TODO add your handling code here:
-        selectionError();
+        hireSpecialists();
     }//GEN-LAST:event_hireSpecBtnMouseReleased
 
     private void viewSpecBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewSpecBtnMouseReleased
         // TODO add your handling code here:
-        ViewSpecialistWindow vsw = new ViewSpecialistWindow(this);
-        vsw.setVisible(true);
+        viewSpecialists();
     }//GEN-LAST:event_viewSpecBtnMouseReleased
 
     private void addEmpBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addEmpBtnMouseReleased
         // TODO add your handling code here:
+        addEmp();
     }//GEN-LAST:event_addEmpBtnMouseReleased
 
     private void showEmpBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showEmpBtnMouseReleased
         // TODO add your handling code here:
+        showEmp();
+
     }//GEN-LAST:event_showEmpBtnMouseReleased
 
-    private void editSpecBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editSpecBtnMouseReleased
+    private void editHireBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editHireBtnMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_editSpecBtnMouseReleased
+        editHire();
+    }//GEN-LAST:event_editHireBtnMouseReleased
 
     private void addSpecBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addSpecBtnMouseReleased
         // TODO add your handling code here:
-        AddSpecialistWindow spw = new AddSpecialistWindow(this);
-        spw.setVisible(true);
+        addSpec();
     }//GEN-LAST:event_addSpecBtnMouseReleased
+
+    private void viewSpecMiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSpecMiActionPerformed
+        // TODO add your handling code here:
+        viewSpecialists();
+    }//GEN-LAST:event_viewSpecMiActionPerformed
+
+    private void addEmpMiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmpMiActionPerformed
+        // TODO add your handling code here:
+        addEmp();
+    }//GEN-LAST:event_addEmpMiActionPerformed
+
+    private void showEmpMiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showEmpMiActionPerformed
+        // TODO add your handling code here:
+        showEmp();
+    }//GEN-LAST:event_showEmpMiActionPerformed
+
+    private void hireSpecMiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireSpecMiActionPerformed
+        // TODO add your handling code here:
+        hireSpecialists();
+    }//GEN-LAST:event_hireSpecMiActionPerformed
+
+    private void hintMiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hintMiActionPerformed
+        // TODO add your handling code here:
+        showHint();
+    }//GEN-LAST:event_hintMiActionPerformed
+
+    private void demoMiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_demoMiActionPerformed
+        // TODO add your handling code here:
+        DemoInputs.demoSpecialists(agency);
+        updateAll();
+    }//GEN-LAST:event_demoMiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -482,39 +617,42 @@ public class Main_window extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JMenuItem aboutMi;
     private javax.swing.JButton addEmpBtn;
+    private javax.swing.JMenuItem addEmpMi;
     private javax.swing.JButton addSpecBtn;
+    private javax.swing.JMenuItem addSpecMi;
     private javax.swing.JScrollPane adminScroll;
     private javax.swing.JTable adminTbl;
     private javax.swing.JPanel buttonPnl;
     private javax.swing.JScrollPane consultantScroll;
     private javax.swing.JTable consultantTbl;
-    private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
+    private javax.swing.JMenuItem demoMi;
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JButton editHireBtn;
+    private javax.swing.JMenuItem editHireMi;
     private javax.swing.JMenu editMenu;
-    private javax.swing.JButton editSpecBtn;
     private javax.swing.JScrollPane employersScroll;
     private javax.swing.JTable employersTbl;
-    private javax.swing.JMenuItem exitMenuItem;
+    private javax.swing.JMenuItem exitMi;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenuItem hintMi;
     private javax.swing.JButton hireSpecBtn;
+    private javax.swing.JMenuItem hireSpecMi;
     private javax.swing.JScrollPane hiresScroll;
     private javax.swing.JTable hiresTbl;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JScrollPane programmerScroll;
     private javax.swing.JTable programmerTbl;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
     private javax.swing.JButton showEmpBtn;
+    private javax.swing.JMenuItem showEmpMi;
     private javax.swing.JButton viewSpecBtn;
+    private javax.swing.JMenuItem viewSpecMi;
     // End of variables declaration//GEN-END:variables
 
     public void updateAll() {
@@ -525,7 +663,7 @@ public class Main_window extends javax.swing.JFrame {
         populateTableOfEmployers(employersTbl);
     }
     
-    public void selectionError(){
+    public void hireSpecialists(){
         
         int employerTableIndex = getRow(employersTbl, "Nie je vybraný žiaden zamestnávateľ z tabuľky!");
         if (employerTableIndex == -1) {
@@ -628,7 +766,7 @@ public class Main_window extends javax.swing.JFrame {
             rowData[1] = list.get(i).getBasicInfo().getMan_day().toString();
             rowData[2] = list.get(i).getBasicInfo().getLength_practise();
             rowData[3] = list.get(i).getBasicInfo().getEducation();
-            rowData[4] = list.get(i).getBasicInfo().getCertificates();
+            rowData[4] = list.get(i).getBasicInfo().getCertificatesString();
             rowData[5] = list.get(i).isHiredText();
             rowData[6] = false;
             
@@ -679,6 +817,55 @@ public class Main_window extends javax.swing.JFrame {
 
     public Agency getAgency() {
         return agency;
+    }
+
+    private void editHire() {
+        int hireTableIndex = getRow(hiresTbl, "Nie je vybraný žiaden prenájom z tabuľky!");
+        if (hireTableIndex == -1) {
+            return;
+        }
+        
+        Hire editHire = agency.getHire(hireTableIndex);
+        
+        EditHireWindow ehw = new EditHireWindow(this, editHire);
+        ehw.setVisible(true);
+    }
+
+    private void viewSpecialists() {
+        ViewSpecialistWindow vsw = new ViewSpecialistWindow(this);
+        vsw.setVisible(true);
+    }
+
+    private void addSpec() {
+        AddSpecialistWindow spw = new AddSpecialistWindow(this);
+        spw.setVisible(true);
+    }
+
+    private void addEmp() {
+        AddEmployerWindow aew = new AddEmployerWindow(this);
+        aew.setVisible(true);
+    }
+
+    private void showAbout() {
+        About about = new About();
+        about.setVisible(true);
+    }
+
+    private void showEmp() {
+        int employerTableIndex = getRow(employersTbl, "Nie je vybraný žiaden zamestnávateľ z tabuľky!");
+        if (employerTableIndex == -1) {
+            return;
+        }
+
+        Employer employer = agency.getEmployer(employerTableIndex);
+
+        ShowEmployerWindow sew = new ShowEmployerWindow(employer);
+        sew.setVisible(true);
+    }
+
+    private void showHint() {
+        Hint hint = new Hint();
+        hint.setVisible(true);
     }
     
 }

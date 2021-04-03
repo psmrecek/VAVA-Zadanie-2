@@ -81,4 +81,7 @@ public class BasicInfo {
         this.certificates = certificates;
     }
     
+    public String getCertificatesString(){
+        return String.join(", ", certificates);
+    }
 }

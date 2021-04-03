@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.stu.fiit.employers;
+package sk.stu.fiit.agency;
 
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import sk.stu.fiit.hires.Hire;
+import sk.stu.fiit.agency.Hire;
 
 /**
  *

@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sk.stu.fiit.hires;
+package sk.stu.fiit.agency;
 
 import java.util.ArrayList;
-import sk.stu.fiit.agency.InputSanitizer;
-import sk.stu.fiit.employers.Employer;
+import sk.stu.fiit.inputs.InputSanitizer;
 import sk.stu.fiit.specialists.Specialist;
 
 /**
