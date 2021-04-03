@@ -83,7 +83,6 @@ public class Main_window extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("IT profesia");
-        setLocationByPlatform(true);
 
         desktopPane.setLayout(new java.awt.GridBagLayout());
 
