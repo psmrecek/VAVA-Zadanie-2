@@ -68,4 +68,4 @@ Všetky časti projektu (zdrojové kódy + JAR spustiteľné súbory aplikácie)
 systému AIS.
 
 ## Riešenie
-Projekt bol vypracovaný vo verzií JAVA 1.8_281. GUI bolo vytvorené v Java Swing.
+Projekt bol vypracovaný vo verzií JAVA 1.8_281 + Maven. GUI bolo vytvorené v Java Swing.
